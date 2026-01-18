@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para ti ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#7a001f,#b3002d,#ff1e56);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Quicksand', sans-serif;
+    padding:16px;
+}
+body{
+    opacity:1;
+    transition:opacity 0.8s ease;
+}
+
+body.fade-out{
+    opacity:0;
+}
+
+
+
+.frame{
+    position:relative;
+    padding:4px;
+    border-radius:32px;
+    background:linear-gradient(
+        120deg,
+        #ff004c,
+        #ffd36a,
+        #ff004c
+    );
+    background-size:300% 300%;
+    animation: marco 8s linear infinite;
+    max-width:380px;
+    width:100%;
+}
+
+@keyframes marco{
+    0%{ background-position:0% 50%; }
+    100%{ background-position:300% 50%; }
+}
+
+
+.card{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(180deg,#fff7f7,#ffeaea);
+    border-radius:28px;
+    padding:34px 26px;
+    text-align:center;
+    box-shadow:0 20px 45px rgba(0,0,0,0.55);
+}
+
+
+.gif{
+    width:100%;
+    max-width:190px;
+    margin:0 auto 18px;
+    display:block;
+    border-radius:18px;
+    box-shadow:0 10px 28px rgba(180,0,40,.6);
+    position:relative;
+    z-index:2;
+}
+
+h1{
+    font-family:'Dancing Script', cursive;
+    font-size:32px;
+    color:#9b002a;
+    margin-bottom:14px;
+    position:relative;
+    z-index:2;
+}
+
+p{
+    font-size:16px;
+    color:#3a0d14;
+    line-height:1.8;
+    margin-bottom:28px;
+    position:relative;
+    z-index:2;
+}
+
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+    position:relative;
+    z-index:2;
+}
+
+button{
+    border:none;
+    border-radius:30px;
+    padding:14px 34px;
+    font-size:16px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+#si{
+    background:linear-gradient(45deg,#b3002d,#ff1e56);
+    color:white;
+    box-shadow:0 8px 22px rgba(180,0,50,.6);
+}
+
+#si:hover{
+    transform:scale(1.1);
+}
+
+#no{
+    background:#5c1a26;
+    color:#fff;
+    position:relative;
+}
+
+
+.heart{
+    position:absolute;
+    bottom:-20px;
+    font-size:18px;
+    color:#ff1e56;
+    opacity:0.25;
+    animation: flotar 6s linear infinite;
+}
+
+@keyframes flotar{
+    0%{
+        transform:translateY(0) scale(0.8);
+        opacity:0;
+    }
+    30%{
+        opacity:0.3;
+    }
+    100%{
+        transform:translateY(-420px) scale(1.2);
+        opacity:0;
+    }
+}
+
+@media(max-width:480px){
+    h1{ font-size:26px; }
+    p{ font-size:15px; }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="frame">
+    <div class="card" id="card">
+
+
+    <img src="Valentines Day Love GIF.gif" class="gif" alt="amor">
+
+    <h1>¿Te gustaría intentar algo conmigo?</h1>
+
+    <p>
+        No te hablo de promesas vacías,<br>
+        te hablo de elegirte con calma,<br>
+        de cuidarte bien<br>
+        y disfrutar lo que venga ❤️
+    </p>
+
+    <div class="buttons">
+        <button id="si" onclick="location.href='carta.html'">Sí ❤️</button>
+        <button id="no">No 🙈</button>
+    </div>
+
+</div>
+
+
+</div>
+
+<script>
+const btnNo = document.getElementById("no");
+const card = document.getElementById("card");
+
+btnNo.addEventListener("mouseover",()=>{
+    const x = Math.random()*220 - 110;
+    const y = Math.random()*180 - 90;
+    btnNo.style.transform = `translate(${x}px,${y}px)`;
+});
+
+setInterval(()=>{
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random()*100 + "%";
+    heart.style.animationDuration = (4 + Math.random()*3) + "s";
+    card.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),6000);
+},500);
+</script>
+
+</body>
+</html>
