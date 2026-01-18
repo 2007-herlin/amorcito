@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para Ti ❤️</title>
-
-
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
 
@@ -24,7 +21,6 @@ body{
     overflow-x:hidden;
 }
 
-
 .card{
     background:linear-gradient(180deg,#fff7f7,#ffeaea);
     border-radius:28px;
@@ -37,7 +33,6 @@ body{
     overflow:hidden;
 }
 
-
 .card::before{
     content:"";
     position:absolute;
@@ -46,7 +41,6 @@ body{
     background:linear-gradient(90deg,#ff004c,#ffd36a,#ff004c);
     z-index:-1;
 }
-
 
 .back{
     position:absolute;
@@ -65,7 +59,6 @@ body{
     justify-content:center;
     z-index:5;
 }
-
 
 .inner-heart{
     position:absolute;
@@ -95,7 +88,6 @@ body{
     100%{ bottom:110%; opacity:0; }
 }
 
-
 h1{
     font-family:'Great Vibes', cursive;
     font-size:2.7rem;
@@ -113,7 +105,6 @@ p{
     text-align:justify;
 }
 
-
 img.main{
     width:100%;
     max-width:280px;
@@ -123,7 +114,6 @@ img.main{
     box-shadow:0 0 28px rgba(180,0,40,.55);
 }
 
-
 .signature{
     margin-top:22px;
     text-align:center;
@@ -131,7 +121,6 @@ img.main{
     font-size:1.7rem;
     color:#b3002d;
 }
-
 
 .actions{
     margin-top:28px;
@@ -144,7 +133,6 @@ img.main{
     margin-bottom:14px;
 }
 
-
 .btn{
     padding:11px 26px;
     border-radius:26px;
@@ -152,6 +140,7 @@ img.main{
     font-size:1rem;
     cursor:pointer;
     margin:6px;
+    transition: transform 0.2s ease;
 }
 
 .btn-yes{
@@ -164,6 +153,7 @@ img.main{
 .btn-no{
     background:#5c1a26;
     color:#fff;
+    position: relative;
 }
 </style>
 
@@ -174,44 +164,41 @@ img.main{
 <div class="card">
     <button class="back" onclick="history.back()">❮</button>
 
-```
-<h1>Para Ti, con todo mi corazón ❤️</h1>
+    <h1>Para Ti, con todo mi corazón ❤️</h1>
 
-<p>
-    Desde que apareciste en mi vida, algo dentro de mí cambió.
-    Empecé a sonreír sin motivo, a pensar en ti incluso cuando no debía,
-    y a sentir que los días son más bonitos simplemente porque existes.
-</p>
+    <p>
+        Desde que apareciste en mi vida, algo dentro de mí cambió.
+        Empecé a sonreír sin motivo, a pensar en ti incluso cuando no debía,
+        y a sentir que los días son más bonitos simplemente porque existes.
+    </p>
 
-<p>
-    No escribo esto para impresionar, sino para ser honesto.
-    Me gustas de una forma sincera, tranquila y profunda,
-    de esas que no hacen ruido, pero se quedan para siempre en el corazón.
-</p>
+    <p>
+        No escribo esto para impresionar, sino para ser honesto.
+        Me gustas de una forma sincera, tranquila y profunda,
+        de esas que no hacen ruido, pero se quedan para siempre en el corazón.
+    </p>
 
-<p>
-    <strong>Sabía que dirías que sí</strong>, porque lo que siento por ti
-    nace desde lo más verdadero de mí.
-</p>
+    <p>
+        <strong>Sabía que dirías que sí</strong>, porque lo que siento por ti
+        nace desde lo más verdadero de mí.
+    </p>
 
-<img src="ramo de rosas de liston ❤️.jpeg" class="main" alt="Ramo de rosas">
+    <img src="ramo de rosas de liston ❤️.jpeg" class="main" alt="Ramo de rosas">
 
-<p>
-    <strong>Te regalo este ramo de flores</strong> como símbolo de mi cariño
-    y de todo lo bonito que deseo compartir contigo.
-</p>
+    <p>
+        <strong>Te regalo este ramo de flores</strong> como símbolo de mi cariño
+        y de todo lo bonito que deseo compartir contigo.
+    </p>
 
-<div class="signature">
-    Con todo mi cariño 💖
-</div>
+    <div class="signature">
+        Con todo mi cariño 💖
+    </div>
 
-<div class="actions">
-    <p>¿Te gustó mi carta?</p>
-    <button class="btn btn-yes" onclick="location.href='audio.html'">Sí ❤️</button>
-    <button class="btn btn-no" onmouseover="escapar(this)">No 🙈</button>
-</div>
-```
-
+    <div class="actions">
+        <p>¿Te gustó mi carta?</p>
+        <button class="btn btn-yes" onclick="location.href='audio.html'">Sí ❤️</button>
+        <button class="btn btn-no" id="btnNo">No 🙈</button>
+    </div>
 </div>
 
 <script>
@@ -225,13 +212,24 @@ document.addEventListener("DOMContentLoaded", () => {
         heart.style.animationDelay = Math.random() * 6 + "s";
         card.appendChild(heart);
     }
-});
 
-function escapar(btn){
-    const x=Math.random()*160-80;
-    const y=Math.random()*160-80;
-    btn.style.transform=`translate(${x}px,${y}px)`;
-}
+    const btnNo = document.getElementById("btnNo");
+
+    function escapar() {
+        const x = Math.random() * (window.innerWidth - btnNo.offsetWidth - 20);
+        const y = Math.random() * (window.innerHeight - btnNo.offsetHeight - 20);
+        btnNo.style.position = "fixed";
+        btnNo.style.left = x + "px";
+        btnNo.style.top = y + "px";
+        btnNo.style.zIndex = "1000";
+    }
+
+    btnNo.addEventListener("mouseover", escapar);
+    btnNo.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        escapar();
+    });
+});
 </script>
 
 </body>
